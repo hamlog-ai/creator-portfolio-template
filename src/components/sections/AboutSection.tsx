@@ -25,8 +25,8 @@ export default function AboutSection() {
               {a.body.map((p, i) => <p key={i}>{p}</p>)}
             </div>
             <ol className="mt-10 space-y-4 border-t border-border pt-6">
-              {a.timeline.map((item) => (
-                <li key={item.date} className="flex flex-col gap-1 text-sm sm:flex-row sm:gap-6">
+              {a.timeline.map((item, i) => (
+                <li key={i} className="flex flex-col gap-1 text-sm sm:flex-row sm:gap-6">
                   <span className="w-28 shrink-0 font-display font-semibold">{item.date}</span>
                   <span className="text-muted-foreground">{item.text}</span>
                 </li>

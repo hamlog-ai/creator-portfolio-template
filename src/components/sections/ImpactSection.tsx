@@ -19,7 +19,7 @@ export default function ImpactSection() {
 
         {im.stats.length > 0 && (
           <div className="reveal-stagger mb-24 grid md:grid-cols-3">
-            {im.stats.map((s) => {
+            {im.stats.map((s, i) => {
               const content = (
                 <>
                   <p className="font-display whitespace-nowrap text-4xl font-bold md:text-3xl lg:text-5xl"><CountUp value={s.value} suffix={im.statSuffix} /></p>
@@ -30,8 +30,8 @@ export default function ImpactSection() {
               );
               const cell = "reveal border-b border-border p-8 md:border-b-0 md:border-r md:last:border-r-0";
               return s.link
-                ? <a key={s.label} href={s.link} target="_blank" rel="noopener noreferrer" className={`${cell} transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-foreground`}>{content}</a>
-                : <div key={s.label} className={cell}>{content}</div>;
+                ? <a key={i} href={s.link} target="_blank" rel="noopener noreferrer" className={`${cell} transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-foreground`}>{content}</a>
+                : <div key={i} className={cell}>{content}</div>;
             })}
           </div>
         )}

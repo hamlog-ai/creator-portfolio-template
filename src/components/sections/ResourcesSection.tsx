@@ -16,8 +16,8 @@ export default function ResourcesSection() {
           <p className="text-base leading-relaxed text-muted-foreground md:text-lg">{r.intro}</p>
         </div>
         <ul className="reveal divide-y divide-border border-y border-border">
-          {r.items.map((item) => (
-            <li key={item.href + item.title}>
+          {r.items.map((item, i) => (
+            <li key={i}>
               <div className="py-6">
                 <a href={item.href} target="_blank" rel="noopener noreferrer" className="inline-block text-xl font-bold transition-colors hover:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground md:text-2xl">{item.title}</a>
                 <p className="mt-2 text-sm text-muted-foreground">{item.detail}</p>

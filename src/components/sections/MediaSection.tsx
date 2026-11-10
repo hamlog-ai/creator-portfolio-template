@@ -24,7 +24,7 @@ export default function MediaSection() {
               <p className="text-base leading-relaxed text-muted-foreground md:text-lg">{m.featured.body}</p>
               {m.featured.links.length > 0 && (
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
-                  {m.featured.links.map((l) => <EditorialLink key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</EditorialLink>)}
+                  {m.featured.links.map((l, i) => <EditorialLink key={i} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</EditorialLink>)}
                 </div>
               )}
             </div>
@@ -33,8 +33,8 @@ export default function MediaSection() {
         </article>
         {m.events.length > 0 && (
           <div className="grid gap-12 border-t border-border pt-12 md:grid-cols-2">
-            {m.events.map((ev) => (
-              <article key={ev.title} className="reveal space-y-6">
+            {m.events.map((ev, i) => (
+              <article key={i} className="reveal space-y-6">
                 <Photo src={ev.photo.src} alt={ev.photo.alt} imageClassName="aspect-[4/3] object-cover" width={1440} height={1080} />
                 <div className="space-y-4">
                   <p className="text-sm text-muted-foreground">{ev.date}</p>

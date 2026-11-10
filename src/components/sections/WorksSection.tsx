@@ -19,8 +19,8 @@ const WorksSection = () => {
         <h2 className="reveal mb-20 text-3xl font-bold md:text-4xl">{w.title}</h2>
         <p className="reveal mb-10 -mt-12 text-muted-foreground">{w.intro}</p>
         <div className="reveal-stagger grid gap-x-6 gap-y-12 lg:grid-cols-2">
-          {w.videos.map((p) => (
-            <article key={p.title} className="reveal">
+          {w.videos.map((p, i) => (
+            <article key={i} className="reveal">
               <div className="group relative aspect-video overflow-hidden bg-black">
                 {playingId === p.title ? (
                   <video key={p.src} className="absolute inset-0 h-full w-full object-contain" src={p.src} poster={p.poster} controls playsInline autoPlay preload="none" aria-label={`${p.title} ${p.episode}`} />
@@ -55,14 +55,14 @@ const WorksSection = () => {
               <p className="absolute bottom-4 left-4 z-20 text-sm text-background/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:bottom-6 md:left-6 md:text-base">{featured.alt}</p>
               <div className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 flex gap-1.5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {gallery.map((img, i) => (
-                  <button type="button" key={img.src} onClick={(e) => { e.stopPropagation(); setFeaturedIndex(i); }} aria-label={`이미지 ${i + 1}`} className={`h-1.5 rounded-full transition-all duration-300 ${i === featuredIndex ? "w-6 bg-background" : "w-1.5 bg-background/50"}`} />
+                  <button type="button" key={i} onClick={(e) => { e.stopPropagation(); setFeaturedIndex(i); }} aria-label={`이미지 ${i + 1}`} className={`h-1.5 rounded-full transition-all duration-300 ${i === featuredIndex ? "w-6 bg-background" : "w-1.5 bg-background/50"}`} />
                 ))}
               </div>
             </div>
           </div>
           <div className="reveal mt-4 grid grid-cols-5 gap-2 md:gap-3">
             {gallery.map((img, i) => (
-              <button type="button" key={img.src} className={`group cursor-pointer overflow-hidden aspect-square transition-opacity duration-300 ${i === featuredIndex ? "ring-2 ring-foreground opacity-100" : "opacity-60 hover:opacity-100"}`} onClick={() => setFeaturedIndex(i)} aria-label={`${img.alt} 선택`}>
+              <button type="button" key={i} className={`group cursor-pointer overflow-hidden aspect-square transition-opacity duration-300 ${i === featuredIndex ? "ring-2 ring-foreground opacity-100" : "opacity-60 hover:opacity-100"}`} onClick={() => setFeaturedIndex(i)} aria-label={`${img.alt} 선택`}>
                 <img src={img.src} alt={img.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
               </button>
             ))}

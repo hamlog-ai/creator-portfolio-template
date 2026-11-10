@@ -19,9 +19,9 @@ const ContactSection = () => {
         </div>
 
         <div className={`reveal grid gap-3 sm:grid-cols-3 ${cols}`}>
-          {c.channels.map((ch) => (
+          {c.channels.map((ch, i) => (
             <a
-              key={ch.label}
+              key={i}
               href={ch.href}
               target={ch.href.startsWith("mailto") ? undefined : "_blank"}
               rel="noopener noreferrer"

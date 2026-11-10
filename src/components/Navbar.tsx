@@ -34,8 +34,8 @@ const Navbar = () => {
 
         <div className="hidden items-center gap-1 lg:flex">
           <ul className="flex items-center gap-1">
-            {site.nav.map((item) => (
-              <li key={item.href}>
+            {site.nav.map((item, i) => (
+              <li key={i}>
                 <a href={item.href} onClick={() => setOpen(false)} className={navItemClass}>
                   {item.label}
                 </a>
@@ -58,8 +58,8 @@ const Navbar = () => {
       {open && (
         <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-border bg-background/95 backdrop-blur-md px-6 pb-6 lg:hidden">
           <ul className="flex flex-col gap-1">
-            {site.nav.map((item) => (
-              <li key={item.href}>
+            {site.nav.map((item, i) => (
+              <li key={i}>
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}

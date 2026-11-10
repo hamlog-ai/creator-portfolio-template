@@ -32,6 +32,7 @@ bun run dev        # http://localhost:3000
 ### 2. 내용 바꾸기: `src/content/site.ts` 한 파일
 
 모든 글, 숫자, 링크, 파일 경로가 이 파일에 있습니다. 따옴표 안만 바꾸면 됩니다.
+자리표시 문구는 전부 "여기에 …"로 시작합니다. 다 채웠는지 확인하려면 `grep -n 여기에 src/content/site.ts` 를 실행해 아무것도 안 나오면 됩니다.
 섹션을 빼고 싶으면 `enabled: false`, 메뉴를 빼고 싶으면 `nav`에서 줄을 지웁니다.
 
 ### 3. 사진·영상 넣기: `public/` 폴더

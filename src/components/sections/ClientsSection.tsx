@@ -29,8 +29,8 @@ export default function ClientsSection() {
       {c.list.length > 0 && (
         <div className="mx-auto mt-16 max-w-5xl border-t border-border pt-10 break-keep">
           <div className="grid gap-10 md:grid-cols-2 md:gap-16">
-            {c.list.map((item) => (
-              <article key={item.title} className="reveal space-y-4">
+            {c.list.map((item, i) => (
+              <article key={i} className="reveal space-y-4">
                 <p className="text-sm text-muted-foreground">{item.kicker}</p>
                 <h3 className="text-2xl font-bold">{item.title}</h3>
                 <p className="text-base leading-relaxed text-muted-foreground md:text-lg">{item.body}</p>

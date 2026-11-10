@@ -24,8 +24,8 @@ export default function Footer() {
           <nav aria-label="하단 메뉴">
             <h2 className={labelStyle}>MENU</h2>
             <ul className="grid grid-cols-2 gap-x-4">
-              {site.nav.map((item) => (
-                <li key={item.href}>
+              {site.nav.map((item, i) => (
+                <li key={i}>
                   <a href={item.href} className={`${linkStyle} text-sm text-white/75`}>{item.label}</a>
                 </li>
               ))}
@@ -38,8 +38,8 @@ export default function Footer() {
               {site.contact.email}
             </a>
             <ul className="mt-1 flex flex-wrap gap-1">
-              {socials.map((ch) => (
-                <li key={ch.href}>
+              {socials.map((ch, i) => (
+                <li key={i}>
                   <a href={ch.href} target="_blank" rel="noopener noreferrer" aria-label={`${ch.label} (새 창)`} title={ch.label} className={`${linkStyle} text-white/75 w-11 justify-center`}>
                     <ChannelIcon name={ch.icon} size={20} aria-hidden="true" />
                   </a>

@@ -24,7 +24,7 @@ export default function TeachingSection() {
               <p className="text-base leading-relaxed text-muted-foreground md:text-lg">{t.featured.body}</p>
               {t.featured.links.length > 0 && (
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
-                  {t.featured.links.map((l) => <EditorialLink key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</EditorialLink>)}
+                  {t.featured.links.map((l, i) => <EditorialLink key={i} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</EditorialLink>)}
                 </div>
               )}
             </div>
@@ -35,8 +35,8 @@ export default function TeachingSection() {
           <div className="reveal border-t border-border pt-8">
             <p className="mb-8 text-sm uppercase tracking-widest text-muted-foreground">{t.upcomingLabel}</p>
             <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-              {t.upcoming.map((u) => (
-                <article key={u.title} className="space-y-4">
+              {t.upcoming.map((u, i) => (
+                <article key={i} className="space-y-4">
                   <p className="text-sm text-muted-foreground">{u.date}</p>
                   <h3 className="text-xl font-bold">{u.title}</h3>
                   <p className="text-base leading-relaxed text-muted-foreground">{u.body}</p>
