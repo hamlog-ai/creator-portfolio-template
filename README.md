@@ -7,7 +7,22 @@ AI 영상 크리에이터를 위한 한 페이지 포트폴리오 사이트 템�
 - 섹션: Hero → About → Works → Clients → Teaching → Impact(숫자·후기) → Media → Resources → Philosophy → What I Do → Contact → Footer
 - Next.js 16 + React 19 + Tailwind CSS 4. 로그인·DB·결제 없음. 서버 비용 0원(Vercel 무료).
 
-## 가장 빠른 길: Claude Code에 맡기기
+## 가장 빠른 길: 터미널 없이, Claude 앱 안에서만
+
+터미널을 열 필요가 없습니다. 명령은 전부 Claude Code가 대신 실행합니다.
+
+1. 클로드 데스크톱 앱 설치 → **Code 탭**
+2. 바탕화면에 빈 폴더(예: `내이름-site`)를 만들고 Code 탭에서 그 폴더를 엽니다
+3. 채팅에 이렇게 씁니다:
+
+```
+https://github.com/hamlog-ai/creator-portfolio-template 템플릿을 이 폴더에 받아서 설치해 줘.
+내 재료 폴더는 [내재료 폴더 경로]야. 이름은 [이름], 스레드는 [주소], 이메일은 [이메일].
+이 재료로 포트폴리오 초안을 만들고 localhost로 띄워서 보여 줘.
+```
+
+4. 다 되면 "인터넷에 올려 줘" → 브라우저에서 Vercel 승인 한 번 → 주소가 나옵니다
+5. 도메인을 샀다면 "도메인 연결해 줘"
 
 **최소 준비물**은 폴더 하나입니다.
 
@@ -73,8 +88,8 @@ ffmpeg -i 원본.mov -vf "scale=-2:1080" -c:v libx264 -crf 23 -preset slow -c:a 
 
 ### 4. 배포
 
-GitHub에 올리고 Vercel에서 Import 하면 끝입니다. 빌드 설정은 기본값 그대로 두면 됩니다.
-도메인 연결은 Vercel → Settings → Domains.
+Claude Code에 "인터넷에 올려 줘"라고 하면 Vercel CLI로 바로 배포합니다(GitHub 불필요). 직접 하려면 `bunx vercel login` 후 `bunx vercel --prod`.
+도메인 연결은 "도메인 연결해 줘" 또는 Vercel → Settings → Domains.
 
 전송량 주의: Vercel 무료는 월 100GB입니다. 영상이 많고 방문자가 늘면 영상은 YouTube/Vimeo 링크나 Cloudflare R2로 옮기세요.
 
