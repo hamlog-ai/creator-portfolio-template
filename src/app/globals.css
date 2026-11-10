@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap')
+layer(base);
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css')
+layer(base);
+
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+/* ──────────────────────────────────────────────
+   디자인 토큰. 색을 바꾸고 싶으면 아래 :root 안의 숫자만 바꾸세요.
+   기본은 흰 배경 · 검정 글자 · 회색 3단계, 모서리 0px.
+   ────────────────────────────────────────────── */
+@theme {
+  --color-footer: #111;
+  --font-display: 'Jost', sans-serif;
+  --font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fade-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 0%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;
+    --radius: 0px;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+}
+
+/* 스크롤 등장 효과: opacity와 transform만, 0.8초 */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal-stagger > .reveal:nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger > .reveal:nth-child(4) { transition-delay: 0.3s; }
+.reveal-stagger > .reveal:nth-child(5) { transition-delay: 0.4s; }
+
+html { scroll-behavior: smooth; }
+
+/* 화면 전체에 아주 얇게 깔리는 필름 그레인 */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* 섹션 앵커가 고정 메뉴 아래로 숨지 않게 */
+main > section[id] { scroll-margin-top: 5rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal.visible, .animate-fade-up {
+    opacity: 1; transform: none; animation: none; transition: none;
+  }
+}
+
+/* 철학 섹션 배경: 데스크톱 마우스 환경에서만 고정 스크롤 효과 */
+.philosophy-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .philosophy-background {
+    background-position: center !important;
+    background-attachment: fixed;
+  }
+}
+
+/* 후기 흐름(마퀴) */
+@keyframes review-flow {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.review-marquee-viewport { overflow: hidden; }
+.review-marquee-track { display: flex; width: max-content; animation: review-flow linear infinite; }
+.review-marquee-group { display: flex; gap: 20px; padding-right: 20px; }
+.review-marquee-card { width: calc((100vw - 68px) / 2); }
+.review-marquee[data-paused="true"] .review-marquee-track { animation-play-state: paused; }
+@media (min-width: 768px) {
+  .review-marquee-card { width: calc((min(100vw - 48px, 1024px) - 40px) / 3); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .review-marquee-viewport { overflow-x: auto; }
+  .review-marquee-track { animation: none; }
+  .review-marquee-group[aria-hidden="true"] { display: none; }
+}
+.review-marquee-viewport:has(:focus-visible) { overflow-x: auto; }
+.review-marquee-viewport:has(:focus-visible) .review-marquee-track { animation: none; }
