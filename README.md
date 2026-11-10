@@ -22,12 +22,16 @@ CLAUDE.md에 이 템플릿의 규칙이 적혀 있어서 Claude Code가 디자�
 
 ## 직접 하는 길
 
-### 1. 실행
+### 1. 받기와 실행
 
 ```bash
+git clone https://github.com/hamlog-ai/creator-portfolio-template.git 내이름-site
+cd 내이름-site
 bun install        # 또는 npm install
 bun run dev        # http://localhost:3000
 ```
+
+GitHub에서 바로 내 저장소로 복사하려면 저장소 페이지의 **Use this template** 버튼을 누르세요.
 
 ### 2. 내용 바꾸기: `src/content/site.ts` 한 파일
 
